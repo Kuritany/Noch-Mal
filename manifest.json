@@ -1,6 +1,7 @@
 {
   "short_name": "Noch Mal!",
   "name": "Bootlegged Noch Mal!",
+  "default_locale": "en",
   "icons": [
     {
       "src": "favicon.ico",
@@ -19,7 +20,7 @@
     }
   ],
   "start_url": ".",
-  "display": "standalone",
+  "display": "fullscreen",
   "theme_color": "#ffffff",
   "background_color": "#000000",
   "orientation": "landscape"
