@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/noch-mal/static/css/main.f855e6bc.css",
-    "main.js": "/noch-mal/static/js/main.c7acbfed.js",
+    "main.css": "/noch-mal/static/css/main.4efd8c40.css",
+    "main.js": "/noch-mal/static/js/main.f8b1ebb3.js",
     "static/js/787.e3534041.chunk.js": "/noch-mal/static/js/787.e3534041.chunk.js",
-    "static/media/logo.svg": "/noch-mal/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/noch-mal/index.html",
-    "main.f855e6bc.css.map": "/noch-mal/static/css/main.f855e6bc.css.map",
-    "main.c7acbfed.js.map": "/noch-mal/static/js/main.c7acbfed.js.map",
+    "main.4efd8c40.css.map": "/noch-mal/static/css/main.4efd8c40.css.map",
+    "main.f8b1ebb3.js.map": "/noch-mal/static/js/main.f8b1ebb3.js.map",
     "787.e3534041.chunk.js.map": "/noch-mal/static/js/787.e3534041.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.c7acbfed.js"
+    "static/css/main.4efd8c40.css",
+    "static/js/main.f8b1ebb3.js"
   ]
 }
