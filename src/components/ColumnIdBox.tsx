@@ -21,7 +21,7 @@ export const ColumnIdBox = ({
     <span
       id={columnId}
       key={columnId}
-      className={"main-grid-scoring-boxes " + marginAdjust}
+      className={"main-grid-scoring-boxes" + (marginAdjust ? ` ${marginAdjust}-margin` : "")}
       onClick={() => OnClick()}
     >
       <svg

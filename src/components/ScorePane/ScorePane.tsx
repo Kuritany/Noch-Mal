@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useScoreContext } from "../../hooks/checkboxContext";
 import { BoxColors } from "../../types/types";
 import { Bonus } from "./Bonus";
@@ -9,13 +8,6 @@ import "./scoreStyles.css";
 
 export default function ScorePane() {
   const { colorScore, letterScore, jokerScore, starScore } = useScoreContext();
-
-  // useEffect(() => {
-  //   console.log("colorScore", colorScore);
-  //   console.log("letterScore", letterScore);
-  //   console.log("jokerScore", jokerScore);
-  //   console.log("starScore", starScore);
-  // }, [colorScore, jokerScore, letterScore, starScore]);
 
   return (
     <div className="column right">

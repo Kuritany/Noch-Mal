@@ -32,7 +32,7 @@ there is never more than one regime of the same color in the same column
 export default function App() {
   return (
     <ScoreProvider>
-      <div className="row root">
+      <div id="base" className="row base">
         <div>
           <div className="row">
             <MainGridColumn column={columnAdata} />

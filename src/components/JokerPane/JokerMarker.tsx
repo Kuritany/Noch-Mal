@@ -7,8 +7,8 @@ export const JokerMarker = () => {
   const { addJokerScore, subtractJokerScore } = useScoreContext();
 
   const OnClick = () => {
-    if (isChecked) addJokerScore(2);
-    if (!isChecked) subtractJokerScore(2);
+    if (isChecked) addJokerScore(1);
+    if (!isChecked) subtractJokerScore(1);
     setIsChecked(!isChecked);
   };
 

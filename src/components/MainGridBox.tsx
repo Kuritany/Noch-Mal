@@ -19,7 +19,7 @@ export const MainGridBox = ({ box, centerLine }: { box: BoxData; centerLine?: bo
     <span
       id={box.index}
       key={box.index}
-      className={`box ${box.color}` + (centerLine ? " center-column" : "")}
+      className={`box ${box.color} ${centerLine ? "center-column" : ""}`}
       onClick={() => OnClick(box.index)}
     >
       {box.stared || <Circle />}

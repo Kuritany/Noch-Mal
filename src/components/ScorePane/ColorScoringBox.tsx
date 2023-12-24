@@ -23,8 +23,8 @@ export const ColorScoringBox = ({
   const onClick = () => {
     const nextState = stateArray[(state + 1) % stateArray.length];
     setState(nextState);
-    if (nextState == States.Circled) addColorScore(score);
-    if (nextState == States.Scratched) subtractColorScore(score);
+    if (nextState === States.Circled) addColorScore(score);
+    if (nextState === States.Scratched) subtractColorScore(score);
   };
 
   return (
@@ -51,10 +51,10 @@ export const ColorScoringBox = ({
           {score}
         </text>
       </svg>
-      {state == States.Scratched && (
+      {state === States.Scratched && (
         <Cross />
       )}
-      {state == States.Circled && (
+      {state === States.Circled && (
         <Circled />
       )}
     </span>

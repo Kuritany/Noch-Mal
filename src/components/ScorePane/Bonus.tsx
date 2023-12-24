@@ -12,6 +12,7 @@ export const Bonus = () => {
           y="50%"
           textAnchor="middle"
           dominantBaseline="central"
+          className="text"
         >
           B
         </text>
@@ -22,6 +23,7 @@ export const Bonus = () => {
           y="50%"
           textAnchor="middle"
           dominantBaseline="central"
+          className="text"
         >
           O
         </text>
@@ -32,6 +34,7 @@ export const Bonus = () => {
           y="50%"
           textAnchor="middle"
           dominantBaseline="central"
+          className="text"
         >
           N
         </text>
@@ -42,6 +45,7 @@ export const Bonus = () => {
           y="50%"
           textAnchor="middle"
           dominantBaseline="central"
+          className="text"
         >
           U
         </text>
@@ -52,6 +56,7 @@ export const Bonus = () => {
           y="50%"
           textAnchor="middle"
           dominantBaseline="central"
+          className="text"
         >
           S
         </text>
@@ -61,6 +66,7 @@ export const Bonus = () => {
           y="50%"
           textAnchor="middle"
           dominantBaseline="central"
+          className="text"
         >
           B
         </text>
@@ -70,6 +76,7 @@ export const Bonus = () => {
           y="50%"
           textAnchor="middle"
           dominantBaseline="central"
+          className="text"
         >
           O
         </text>
@@ -79,6 +86,7 @@ export const Bonus = () => {
           y="50%"
           textAnchor="middle"
           dominantBaseline="central"
+          className="text"
         >
           N
         </text>
@@ -88,6 +96,7 @@ export const Bonus = () => {
           y="50%"
           textAnchor="middle"
           dominantBaseline="central"
+          className="text"
         >
           U
         </text>
@@ -97,6 +106,7 @@ export const Bonus = () => {
           y="50%"
           textAnchor="middle"
           dominantBaseline="central"
+          className="text"
         >
           S
         </text>

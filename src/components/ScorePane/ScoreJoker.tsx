@@ -14,7 +14,7 @@ export const ScoreJoker = () => {
         </text>
       </svg>
     </span>
-      <span className="small-text">(+2)</span>
+      <span className="small-text">(+1)</span>
     </span>
   );
 };

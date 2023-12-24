@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { useScoreContext } from "../../hooks/checkboxContext";
 import { ColorJoker } from "./ColorJoker";
 import { JokerMarker } from "./JokerMarker";
 import { NumberJoker } from "./Numberjoker";

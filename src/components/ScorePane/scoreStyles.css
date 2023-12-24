@@ -1,6 +1,7 @@
 .right {
   width: 100%;
   justify-content: right;
+  -webkit-justify-content: right;
 }
 
 .box {
@@ -24,17 +25,17 @@
 }
 
 .bonus {
-  font-size: 24px;
   width: 94px;
   height: 32px;
   display: flex;
   background-color: transparent;
   font-weight: 1000;
+}
 
-  text {
-    transform:scale(1.2,1);
-    background-color: transparent;   
-  }
+.text {
+  font-size: 24px;
+  transform:scaleX(1.2);
+  -webkit-transform: scaleX(1.2);
 }
 
 .score-container {
@@ -48,9 +49,14 @@
   padding: 4px;
   font-size: 32px;
   justify-content: space-between;
+}
 
-  .text-red { color: var(--red); }
-  .text-green { color: var(--green); }
+.text-red {
+  color: var(--red);
+}
+
+.text-green {
+  color: var(--green);
 }
 
 .score-label {
@@ -61,22 +67,22 @@
   box-sizing: border-box;
   padding: 4px;
   letter-spacing: 1px;
+}
 
-  &.letter-score {
-    font-size: 24px;
-    padding-right: 8px;
-    transform:scale(1.2,1);
-  }
+.letter-score {
+  font-size: 28px;
+  padding-right: 8px;
+  transform:scale(1.2,1);
+}
 
-  .joker-score {
-    width: 26px;
-    height: 26px;
-    display: flex;
-    border-radius: 50%;
-    position: relative;
-    background-color: white;
-    box-sizing: border-box;
-  }
+.joker-score {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  border-radius: 50%;
+  position: relative;
+  background-color: white;
+  box-sizing: border-box;
 }
 
 .small-text {
@@ -89,8 +95,10 @@
 
 .score {
   height: 100%;
-  font-size: 20px;
-  padding-right: 2px
+  font-size: 22px;
+  padding-right: 2px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .spacer {

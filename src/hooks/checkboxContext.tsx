@@ -23,7 +23,7 @@ const ScoreContext = createContext<IScore>({} as IScore);
 export const ScoreProvider = ({ children }: any) => {
   const [colorScore, setColorScore] = useState<number>(0);
   const [letterScore, setLetterScore] = useState<number>(0);
-  const [jokerScore, setJokerScore] = useState<number>(16);
+  const [jokerScore, setJokerScore] = useState<number>(8);
   const [starScore, setStarScore] = useState<number>(-30);
 
   const addColorScore = useCallback((points: number) => setColorScore((prev) => prev + points), []);

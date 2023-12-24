@@ -13,13 +13,11 @@ enum States {
 export const ColumnScoringBox = ({
   columnId,
   score,
-  isFirstCompleteRow = false,
   redText = false,
   marginAdjust
 }: {
   columnId: ColumnId;
   score: number;
-  isFirstCompleteRow?: boolean;
   redText?: boolean;
   marginAdjust?: "top" | "bottom";
 }) => {
@@ -30,15 +28,15 @@ export const ColumnScoringBox = ({
   const OnClick = () => {
     const nextState = stateArray[(state + 1) % stateArray.length];
     setState(nextState);
-    if (nextState == States.Circled) addLetterScore(score);
-    if (nextState == States.Scratched) subtractLetterScore(score);
+    if (nextState === States.Circled) addLetterScore(score);
+    if (nextState === States.Scratched) subtractLetterScore(score);
   };
 
   return (
     <span
       id={columnId}
       key={columnId}
-      className={"main-grid-scoring-boxes " + marginAdjust}
+      className={"main-grid-scoring-boxes" + (marginAdjust ? ` ${marginAdjust}-margin` : "")}
       onClick={OnClick}
     >
       <svg
@@ -60,10 +58,10 @@ export const ColumnScoringBox = ({
           {score}
         </text>
       </svg>
-      {state == States.Scratched && (
+      {state === States.Scratched && (
         <Cross />
       )}
-      {state == States.Circled && (
+      {state === States.Circled && (
         <Circled />
       )}
     </span>

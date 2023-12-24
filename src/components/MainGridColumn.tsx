@@ -1,9 +1,7 @@
-import { useEffect } from "react";
 import { ColumnData } from "../types/types";
 import { ColumnIdBox } from "./ColumnIdBox";
 import { ColumnScoringBox } from "./ColumnScoringBox";
 import { MainGridBox } from "./MainGridBox";
-import { useScoreContext } from "../hooks/checkboxContext";
 
 export const MainGridColumn = ({
   column,
