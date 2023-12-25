@@ -12,6 +12,8 @@
 body {
   background-color: #000;
   margin: 0;
+  height: fit-content;
+  overflow: hidden;
 }
 
 .base {
@@ -20,7 +22,6 @@ body {
   margin: auto;
   box-sizing: border-box;
   width: 695px;
-  height: 418px;
 }
   
 .row {

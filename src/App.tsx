@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import JokerPane from "./components/JokerPane/JokerPane";
 import { MainGridColumn } from "./components/MainGridColumn";
 import ScorePane from "./components/ScorePane/ScorePane";
@@ -30,6 +31,34 @@ there is never more than one regime of the same color in the same column
 */
 
 export default function App() {
+  const setDimmentions = () => {
+    const element = document.getElementById("root");
+    
+    if (!element) return;
+    
+    const baseHeight = 418;
+    const baseWidth = 695;
+    const baseRatio = baseHeight / baseWidth;
+    const windowHeight = window.innerHeight;
+    const windowWidth = window.innerWidth;
+    const windowRatio = windowHeight / windowWidth;
+    if (windowRatio > baseRatio) {
+      element.style.transformOrigin = "0px 0px";
+      element.style.transform = `scale(${windowWidth / baseWidth})`;
+      element.style.width = `${window.innerWidth / (windowWidth / baseWidth)}px`;
+    }
+    else {
+      element.style.transformOrigin = "0px 0px";
+      element.style.transform = `scale(${windowHeight / baseHeight})`;
+      element.style.width = `${window.innerWidth / (windowHeight / baseHeight)}px`;
+    }
+  };
+
+  useEffect(() => {
+    setDimmentions();
+    window.addEventListener("resize", setDimmentions);
+  }, []);
+
   return (
     <ScoreProvider>
       <div id="base" className="row base">
