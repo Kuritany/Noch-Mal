@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ColumnId } from "../types/types";
-import { Cross } from "./Symbols/Cross";
+import { Cross } from "./Symbols/Checking/Cross";
 
 export const ColumnIdBox = ({
   columnId,

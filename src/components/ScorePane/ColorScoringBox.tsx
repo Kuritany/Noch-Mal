@@ -1,37 +1,35 @@
-import { useState } from "react";
-import { BoxColors } from "../../types/types";
+import { BoxColors, Mark } from "../../types/types";
 import { Circled } from "../Symbols/Circled";
-import { Cross } from "../Symbols/Cross";
+import { Cross } from "../Symbols/Checking/Cross";
 import { ColorMap } from "../../constants/ColorMap";
 import { useScoreContext } from "../../hooks/checkboxContext";
 
-enum States {
-  Blank = 0,
-  Circled = 1,
-  Scratched = 2
-}
-
 export const ColorScoringBox = ({
-  score, color
+  score,
+  color,
+  index,
 }: {
-  score: number; color: BoxColors
+  score: number;
+  color: BoxColors;
+  index: string;
 }) => {
-  const [state, setState] = useState<States>(States.Blank);
-  const stateArray: States[] = [States.Blank, States.Circled, States.Scratched];
-  const { addColorScore, subtractColorScore } = useScoreContext();
+  const stateArray: Mark[] = [Mark.Blank, Mark.Circled, Mark.Scratched];
+  const { colorBoxesMarkedState, colorBoxesMarkedDispatch } = useScoreContext();
+
+  const getState = () =>
+    colorBoxesMarkedState.find((el) => el.index === index)!.mark;
 
   const onClick = () => {
-    const nextState = stateArray[(state + 1) % stateArray.length];
-    setState(nextState);
-    if (nextState === States.Circled) addColorScore(score);
-    if (nextState === States.Scratched) subtractColorScore(score);
+    const nextMark = stateArray[(getState() + 1) % 3];
+    colorBoxesMarkedDispatch({
+      type: "mark",
+      index: index,
+      mark: nextMark,
+    });
   };
 
   return (
-    <span
-      className={`box ${color}`}
-      onClick={onClick}
-    >
+    <span className={`box ${color}`} onClick={onClick}>
       <span className="light" />
       <svg
         fill={ColorMap.get(color)}
@@ -51,12 +49,8 @@ export const ColorScoringBox = ({
           {score}
         </text>
       </svg>
-      {state === States.Scratched && (
-        <Cross />
-      )}
-      {state === States.Circled && (
-        <Circled />
-      )}
+      {getState() === Mark.Scratched && <Cross />}
+      {getState() === Mark.Circled && <Circled />}
     </span>
   );
 };

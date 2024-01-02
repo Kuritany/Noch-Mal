@@ -1,35 +1,37 @@
 import { useState } from "react";
-import { ColumnId } from "../types/types";
+import { ColumnId, Mark } from "../types/types";
 import { Circled } from "./Symbols/Circled";
-import { Cross } from "./Symbols/Cross";
+import { Cross } from "./Symbols/Checking/Cross";
 import { useScoreContext } from "../hooks/checkboxContext";
-
-enum States {
-  Blank = 0,
-  Circled = 1,
-  Scratched = 2
-}
 
 export const ColumnScoringBox = ({
   columnId,
   score,
   redText = false,
-  marginAdjust
+  marginAdjust,
+  index
 }: {
   columnId: ColumnId;
   score: number;
   redText?: boolean;
   marginAdjust?: "top" | "bottom";
+  index: string;
 }) => {
-  const [state, setState] = useState<States>(States.Blank);
-  const stateArray: States[] = [States.Blank, States.Circled, States.Scratched];
-  const { addLetterScore, subtractLetterScore } = useScoreContext();
+  const stateArray: Mark[] = [Mark.Blank, Mark.Circled, Mark.Scratched];
+  const { letterScoreingBoxesState, letterScoreingBoxesDispatch } = useScoreContext();
+
+  const getState = () => letterScoreingBoxesState.find((el) => el.index === index)!.mark;
 
   const OnClick = () => {
-    const nextState = stateArray[(state + 1) % stateArray.length];
-    setState(nextState);
-    if (nextState === States.Circled) addLetterScore(score);
-    if (nextState === States.Scratched) subtractLetterScore(score);
+    const nextMark =
+      stateArray[
+        (getState() + 1) % 3
+      ];
+    letterScoreingBoxesDispatch({
+      type: "mark",
+      index: index,
+      mark: nextMark,
+    });
   };
 
   return (
@@ -58,10 +60,10 @@ export const ColumnScoringBox = ({
           {score}
         </text>
       </svg>
-      {state === States.Scratched && (
+      {getState() === Mark.Scratched && (
         <Cross />
       )}
-      {state === States.Circled && (
+      {getState() === Mark.Circled && (
         <Circled />
       )}
     </span>

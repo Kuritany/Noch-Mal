@@ -10,14 +10,14 @@ export default function JokerPane() {
       <span className="text">/</span>
       <ColorJoker />
       <span className="text">=</span>
-      <JokerMarker />
-      <JokerMarker />
-      <JokerMarker />
-      <JokerMarker />
-      <JokerMarker />
-      <JokerMarker />
-      <JokerMarker />
-      <JokerMarker />
+      <JokerMarker index="Joker0" />
+      <JokerMarker index="Joker1" />
+      <JokerMarker index="Joker2" />
+      <JokerMarker index="Joker3" />
+      <JokerMarker index="Joker4" />
+      <JokerMarker index="Joker5" />
+      <JokerMarker index="Joker6" />
+      <JokerMarker index="Joker7" />
     </div>
   );
 }

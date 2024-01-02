@@ -1,15 +1,24 @@
-import { useState } from "react";
-import { Cross } from "../Symbols/Cross";
+import { useMemo, useState } from "react";
+import { Cross } from "../Symbols/Checking/Cross";
 import { useScoreContext } from "../../hooks/checkboxContext";
 
-export const JokerMarker = () => {
-  const [isChecked, setIsChecked] = useState(false);
-  const { addJokerScore, subtractJokerScore } = useScoreContext();
+export const JokerMarker = ({ index }: { index: string }) => {
+  const {
+    jokerBoxesState,
+    jokerBoxesDispatch,
+  } = useScoreContext();
+
+  const isChecked = useMemo(
+    () => jokerBoxesState.find((el) => el.index === index)!.isChecked,
+    [jokerBoxesState]
+  );
 
   const OnClick = () => {
-    if (isChecked) addJokerScore(1);
-    if (!isChecked) subtractJokerScore(1);
-    setIsChecked(!isChecked);
+    jokerBoxesDispatch({
+      type: "check",
+      index: index,
+      isChecked: !isChecked,
+    });
   };
 
   return (
@@ -21,7 +30,13 @@ export const JokerMarker = () => {
         strokeLinejoin="round"
         className="character"
       >
-        <text x="45%" y="52%" fontSize="24" textAnchor="middle" dominantBaseline="central">
+        <text
+          x="45%"
+          y="52%"
+          fontSize="24"
+          textAnchor="middle"
+          dominantBaseline="central"
+        >
           !
         </text>
       </svg>

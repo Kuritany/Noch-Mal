@@ -17,7 +17,7 @@ import {
   columnLdata,
   columnMdata,
   columnNdata,
-  columnOdata
+  columnOdata,
 } from "./constants/mainGridBoxes";
 import { ScoreProvider } from "./hooks/checkboxContext";
 import "./mainStyles.css";
@@ -33,9 +33,9 @@ there is never more than one regime of the same color in the same column
 export default function App() {
   const setDimmentions = () => {
     const element = document.getElementById("root");
-    
+
     if (!element) return;
-    
+
     const baseHeight = 418;
     const baseWidth = 695;
     const baseRatio = baseHeight / baseWidth;
@@ -45,18 +45,31 @@ export default function App() {
     if (windowRatio > baseRatio) {
       element.style.transformOrigin = "0px 0px";
       element.style.transform = `scale(${windowWidth / baseWidth})`;
-      element.style.width = `${window.innerWidth / (windowWidth / baseWidth)}px`;
-    }
-    else {
+      element.style.width = `${
+        window.innerWidth / (windowWidth / baseWidth)
+      }px`;
+    } else {
       element.style.transformOrigin = "0px 0px";
       element.style.transform = `scale(${windowHeight / baseHeight})`;
-      element.style.width = `${window.innerWidth / (windowHeight / baseHeight)}px`;
+      element.style.width = `${
+        window.innerWidth / (windowHeight / baseHeight)
+      }px`;
     }
   };
 
   useEffect(() => {
     setDimmentions();
-    window.addEventListener("resize", setDimmentions);
+    // window.addEventListener("resize", setDimmentions);
+    window.addEventListener("orientationchange", setDimmentions);
+    // console.log('widnow', window);
+    // console.log('agent', window.navigator.userAgent);
+    // console.log('document', document);
+    // if (document.location.hash === '#yo') {
+		//   window.history.replaceState('', window.document.title, document.location.pathname);
+    // } else {
+    //   window.history.replaceState('', window.document.title, document.location.pathname + '#ra2hs');
+    // }
+    // console.log('hash', document.location.hash);
   }, []);
 
   return (

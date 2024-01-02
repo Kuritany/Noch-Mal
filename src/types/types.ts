@@ -37,11 +37,34 @@ export class BoxData {
     this.stared = stared;
     this.index = column + row;
   }
-}
+};
 
 export type ColumnData = {
   column: ColumnId;
   boxesData: BoxData[];
   pointsBase: number;
   pointsFirstBonus: number;
+};
+
+export type CheckedState = {
+  index: string;
+  isChecked: boolean;
+};
+
+export type MainGridCheckedState = {
+  index: string;
+  stared: boolean;
+  isChecked: boolean;
+};
+
+export enum Mark {
+  Blank = 0,
+  Circled = 1,
+  Scratched = 2
+};
+
+export type MarkedState = {
+  index: string;
+  score: number;
+  mark: Mark;
 };

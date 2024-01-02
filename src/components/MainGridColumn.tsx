@@ -21,11 +21,13 @@ export const MainGridColumn = ({
         redText={centerLine} 
         score={column.pointsFirstBonus + column.pointsBase}
         marginAdjust="top"
+        index={column.column + "1st"}
       />
       <ColumnScoringBox
         columnId={column.column}
         redText={centerLine} 
         score={column.pointsBase}
+        index={column.column + "2nd"}
       />
     </div>
   );

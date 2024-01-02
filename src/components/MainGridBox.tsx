@@ -1,18 +1,31 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { BoxData } from "../types/types";
-import { Cross } from "./Symbols/Cross";
+import { Cross } from "./Symbols/Checking/Cross";
 import { Star } from "./Symbols/Star";
 import { Circle } from "./Symbols/Circle";
 import { useScoreContext } from "../hooks/checkboxContext";
 
-export const MainGridBox = ({ box, centerLine }: { box: BoxData; centerLine?: boolean }) => {
-  const [isChecked, setIsChecked] = useState(false);
-  const { addStarScore, subtractStarScore } = useScoreContext();
+export const MainGridBox = ({
+  box,
+  centerLine,
+}: {
+  box: BoxData;
+  centerLine?: boolean;
+}) => {
+  const { mainGridState, mainGridDispatch } =
+    useScoreContext();
+
+  const isChecked = useMemo(
+    () => mainGridState.find((el) => el.index === box.index)!.isChecked,
+    [mainGridState]
+  );
 
   const OnClick = (boxIndex: string) => {
-    if (box.stared && !isChecked) addStarScore(2);
-    if (box.stared && isChecked) subtractStarScore(2);
-    setIsChecked(!isChecked);
+    mainGridDispatch({
+      type: "check",
+      index: box.index,
+      isChecked: !isChecked,
+    });
   };
 
   return (
@@ -23,12 +36,8 @@ export const MainGridBox = ({ box, centerLine }: { box: BoxData; centerLine?: bo
       onClick={() => OnClick(box.index)}
     >
       {box.stared || <Circle />}
-      {box.stared && (
-        <Star />
-      )}
-      {isChecked && (
-        <Cross />
-      )}
+      {box.stared && <Star />}
+      {isChecked && <Cross />}
     </span>
   );
 };

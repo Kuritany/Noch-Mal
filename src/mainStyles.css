@@ -22,9 +22,15 @@ body {
   margin: auto;
   box-sizing: border-box;
   width: 695px;
+  height: 418px;
 }
   
 .row {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
   display: flex;
   flex-direction: row;
   gap: 2px;
@@ -63,6 +69,11 @@ body {
 .box {
   width: 32px;
   height: 32px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
   display: flex;
   border-radius: 5px;
   position: relative;
@@ -112,6 +123,11 @@ body {
 .main-grid-scoring-boxes {
   width: 32px;
   height: 32px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
   display: flex;
   border-radius: 5px;
   position: relative;
@@ -129,6 +145,18 @@ body {
 .character {
   height: 30px;
   width: 30px;
+  background-color: transparent;
+  margin: auto;
+  display: inline-block;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+.erasure {
+  height: 26px;
+  width: 26px;
   background-color: transparent;
   margin: auto;
   display: inline-block;

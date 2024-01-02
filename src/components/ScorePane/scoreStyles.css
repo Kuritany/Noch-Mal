@@ -7,6 +7,11 @@
 .box {
   width: 32px;
   height: 32px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
   display: flex;
   border-radius: 5px;
   position: relative;
@@ -27,6 +32,11 @@
 .bonus {
   width: 94px;
   height: 32px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
   display: flex;
   background-color: transparent;
   font-weight: 1000;
@@ -41,6 +51,11 @@
 .score-container {
   width: 66px;
   height: 32px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
   display: flex;
   border-radius: 5px;
   background: white;
@@ -61,6 +76,11 @@
 
 .score-label {
   align-items: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
   display: flex;
   height: 32px;
   color: #fff;
@@ -78,6 +98,11 @@
 .joker-score {
   width: 26px;
   height: 26px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
   display: flex;
   border-radius: 50%;
   position: relative;
@@ -88,6 +113,11 @@
 .small-text {
   height: 100%;
   font-size: 14px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
   display: flex;
   align-items: flex-end;
   padding: 4px;
@@ -97,14 +127,24 @@
   height: 100%;
   font-size: 22px;
   padding-right: 2px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
   display: flex;
   align-items: flex-end;
 }
 
 .spacer {
   align-items: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
   display: flex;
-  height: 32px;
+  height: 18px;
   color: #fff;
   box-sizing: border-box;
   padding: 4px;
@@ -112,4 +152,15 @@
   font-size: 28px;
   transform:scale(1.2,1);
   transform:translate(0px, 0px);
+}
+
+.resset-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  background: white;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: space-between;
+  position: relative;
 }
