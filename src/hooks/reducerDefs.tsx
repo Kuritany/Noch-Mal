@@ -14,17 +14,23 @@ function getAllThemCheckedStates(): MainGridCheckedState[] {
 export const mainGridReducer = (state: MainGridCheckedState[], action: any) => {
   switch (action.type) {
     case "check":
-      return state.map((box: MainGridCheckedState) => {
+      const checkState = state.map((box: MainGridCheckedState) => {
         if (box.index === action.index) {
           return { ...box, isChecked: action.isChecked };
         } else {
           return box;
         }
       });
+      sessionStorage.setItem("main",JSON.stringify(checkState));
+      return checkState;
     case "resset":
-      return state.map((box: MainGridCheckedState) => {
+      const ressetState = state.map((box: MainGridCheckedState) => {
         return { ...box, isChecked: false };
       });
+      sessionStorage.setItem("main",JSON.stringify(ressetState));
+      return ressetState;
+    case "restore":
+      return action.stored;
     default:
       return state;
   }
@@ -51,17 +57,23 @@ export const letterHeaderBoxesInitalState: CheckedState[] = [
 export const letterHeaderBoxesReducer = (state: CheckedState[], action: any) => {
   switch (action.type) {
     case "check":
-      return state.map((box: CheckedState) => {
+      const checkState = state.map((box: CheckedState) => {
         if (box.index === action.index) {
           return { ...box, isChecked: action.isChecked };
         } else {
           return box;
         }
       });
+      sessionStorage.setItem("headers",JSON.stringify(checkState));
+      return checkState;
     case "resset":
-      return state.map((box: CheckedState) => {
+      const ressetState = state.map((box: CheckedState) => {
         return { ...box, isChecked: false };
       });
+      sessionStorage.setItem("headers",JSON.stringify(ressetState));
+      return ressetState;
+    case "restore":
+      return action.stored;
     default:
       return state;
   }
@@ -103,17 +115,23 @@ export const letterScoreingBoxesInitialState: MarkedState[] = [
 export const letterScoreingBoxesReducer = (state: MarkedState[], action: any) => {
   switch (action.type) {
     case "mark":
-      return state.map((box: MarkedState) => {
+      const checkState = state.map((box: MarkedState) => {
         if (box.index === action.index) {
           return { ...box, mark: action.mark };
         } else {
           return box;
         }
       });
+      sessionStorage.setItem("columnScoring",JSON.stringify(checkState));
+      return checkState;
     case "resset":
-      return state.map((box: MarkedState) => {
+      const ressetState = state.map((box: MarkedState) => {
         return { ...box, mark: Mark.Blank };
       });
+      sessionStorage.setItem("columnScoring",JSON.stringify(ressetState));
+      return ressetState;
+    case "restore":
+        return action.stored;
     default:
       return state;
   }
@@ -135,17 +153,23 @@ export const colorScoreingBoxesInitialState: MarkedState[] = [
 export const colorScoreingBoxesReducer = (state: MarkedState[], action: any) => {
   switch (action.type) {
     case "mark":
-      return state.map((box: MarkedState) => {
+      const checkState = state.map((box: MarkedState) => {
         if (box.index === action.index) {
           return { ...box, mark: action.mark };
         } else {
           return box;
         }
       });
+      sessionStorage.setItem("colorScoring",JSON.stringify(checkState));
+      return checkState;
     case "resset":
-      return state.map((box: MarkedState) => {
+      const ressetState = state.map((box: MarkedState) => {
         return { ...box, mark: Mark.Blank };
       });
+      sessionStorage.setItem("colorScoring",JSON.stringify(ressetState));
+      return ressetState;
+    case "restore":
+      return action.stored;
     default:
       return state;
   }
@@ -165,17 +189,23 @@ export const jokerBoxesInitialState: CheckedState[] = [
 export const jokerBoxesReducer = (state: CheckedState[], action: any) => {
   switch (action.type) {
     case "check":
-      return state.map((box: CheckedState) => {
+      const checkState = state.map((box: CheckedState) => {
         if (box.index === action.index) {
           return { ...box, isChecked: action.isChecked };
         } else {
           return box;
         }
       });
+      sessionStorage.setItem("jokers",JSON.stringify(checkState));
+      return checkState;
     case "resset":
-      return state.map((box: CheckedState) => {
+      const ressetState = state.map((box: CheckedState) => {
         return { ...box, isChecked: false };
       });
+      sessionStorage.setItem("jokers",JSON.stringify(ressetState));
+      return ressetState;
+    case "restore":
+      return action.stored;
     default:
       return state;
   }

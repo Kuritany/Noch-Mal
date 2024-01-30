@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Cross } from "../Symbols/Checking/Cross";
 import { useScoreContext } from "../../hooks/checkboxContext";
 

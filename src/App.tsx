@@ -59,15 +59,15 @@ export default function App() {
 
   useEffect(() => {
     setDimmentions();
-    // window.addEventListener("resize", setDimmentions);
-    window.addEventListener("orientationchange", setDimmentions);
+    window.addEventListener("resize", setDimmentions);
+    // window.addEventListener("orientationchange", setDimmentions);
     // console.log('widnow', window);
     // console.log('agent', window.navigator.userAgent);
     // console.log('document', document);
-    // if (document.location.hash === '#yo') {
+    // if (document.location.hash === '#ri') {
 		//   window.history.replaceState('', window.document.title, document.location.pathname);
     // } else {
-    //   window.history.replaceState('', window.document.title, document.location.pathname + '#ra2hs');
+    //   window.history.replaceState('', window.document.title, document.location.pathname + '#ri');
     // }
     // console.log('hash', document.location.hash);
   }, []);

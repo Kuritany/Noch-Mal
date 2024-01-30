@@ -1,27 +1,41 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ColumnId } from "../types/types";
 import { Cross } from "./Symbols/Checking/Cross";
+import { useScoreContext } from "../hooks/checkboxContext";
 
 export const ColumnIdBox = ({
   columnId,
   redText = false,
-  marginAdjust
+  marginAdjust,
 }: {
   columnId: ColumnId;
   redText?: boolean;
   marginAdjust?: "top" | "bottom";
 }) => {
-  const [isChecked, setIsChecked] = useState(false);
+  const { letterHeaderBoxesState, letterHeaderBoxesDispatch } =
+    useScoreContext();
+
+  const isChecked = useMemo(
+    () => letterHeaderBoxesState.find((el) => el.index === columnId)!.isChecked,
+    [letterHeaderBoxesState]
+  );
 
   const OnClick = () => {
-    setIsChecked(!isChecked);
+    letterHeaderBoxesDispatch({
+      type: "check",
+      index: columnId,
+      isChecked: !isChecked,
+    });
   };
 
   return (
     <span
       id={columnId}
       key={columnId}
-      className={"main-grid-scoring-boxes" + (marginAdjust ? ` ${marginAdjust}-margin` : "")}
+      className={
+        "main-grid-scoring-boxes" +
+        (marginAdjust ? ` ${marginAdjust}-margin` : "")
+      }
       onClick={() => OnClick()}
     >
       <svg
@@ -43,9 +57,7 @@ export const ColumnIdBox = ({
           {columnId}
         </text>
       </svg>
-      {isChecked && (
-        <Cross />
-      )}
+      {isChecked && <Cross />}
     </span>
   );
 };

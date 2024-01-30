@@ -3,6 +3,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useReducer,
   useState,
@@ -44,54 +45,68 @@ interface IScore {
 const ScoreContext = createContext<IScore>({} as IScore);
 
 export const ScoreProvider = ({ children }: any) => {
-  const [colorScoringBoxesMarkedState, colorColoringBoxesMarkedDispatch] =
-    useReducer(colorScoreingBoxesReducer, colorScoreingBoxesInitialState);
+  const [colorBoxesMarkedState, colorBoxesMarkedDispatch] = useReducer(
+    colorScoreingBoxesReducer,
+    sessionStorage.getItem("colorScoring")
+      ? JSON.parse(sessionStorage.getItem("colorScoring") ?? "{}")
+      : colorScoreingBoxesInitialState
+  );
   const [letterHeaderBoxesState, letterHeaderBoxesDispatch] = useReducer(
     letterHeaderBoxesReducer,
-    letterHeaderBoxesInitalState
+    sessionStorage.getItem("headers")
+      ? JSON.parse(sessionStorage.getItem("headers") ?? "{}")
+      : letterHeaderBoxesInitalState
   );
   const [letterScoreingBoxesState, letterScoreingBoxesDispatch] = useReducer(
     letterScoreingBoxesReducer,
-    letterScoreingBoxesInitialState
+    sessionStorage.getItem("columnScoring")
+      ? JSON.parse(sessionStorage.getItem("columnScoring") ?? "{}")
+      : letterScoreingBoxesInitialState
   );
   const [jokerBoxesState, jokerBoxesDispatch] = useReducer(
     jokerBoxesReducer,
-    jokerBoxesInitialState
+    sessionStorage.getItem("jokers")
+      ? JSON.parse(sessionStorage.getItem("jokers") ?? "{}")
+      : jokerBoxesInitialState
   );
   const [mainGridState, mainGridDispatch] = useReducer(
     mainGridReducer,
-    mainGridInitialState
+    sessionStorage.getItem("main")
+      ? JSON.parse(sessionStorage.getItem("main") ?? "{}")
+      : mainGridInitialState
   );
   const colorScore = useMemo<number>(() => {
     let value = 0;
-    colorScoringBoxesMarkedState.forEach((el) => {
+    colorBoxesMarkedState.forEach((el: any) => {
       if (el.mark === Mark.Circled) value += el.score;
     });
     return value;
-  }, [colorScoringBoxesMarkedState]);
+  }, [colorBoxesMarkedState]);
 
   const letterScore = useMemo<number>(() => {
     let value = 0;
-    letterScoreingBoxesState.forEach((el) => {
+    letterScoreingBoxesState.forEach((el: any) => {
       if (el.mark === Mark.Circled) value += el.score;
     });
     return value;
   }, [letterScoreingBoxesState]);
 
   const jokerScore = useMemo<number>(() => {
-    return jokerBoxesState.filter((el) => !el.isChecked).length;
+    return jokerBoxesState.filter((el: any) => !el.isChecked).length;
   }, [jokerBoxesState]);
 
   const starScore = useMemo<number>(() => {
-    return mainGridState.filter((el) => el.stared && !el.isChecked).length * -2;
+    return (
+      mainGridState.filter((el: any) => el.stared && !el.isChecked).length * -2
+    );
   }, [mainGridState]);
 
   return (
     <ScoreContext.Provider
       value={{
         colorScore,
-        colorBoxesMarkedState: colorScoringBoxesMarkedState,
-        colorBoxesMarkedDispatch: colorColoringBoxesMarkedDispatch,
+        colorBoxesMarkedState,
+        colorBoxesMarkedDispatch,
         letterScore,
         letterHeaderBoxesState,
         letterHeaderBoxesDispatch,

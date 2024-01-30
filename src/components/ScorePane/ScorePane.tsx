@@ -6,29 +6,17 @@ import { ColorScoringBox } from "./ColorScoringBox";
 import { ScoreJoker } from "./ScoreJoker";
 import { ScoreStar } from "./ScoreStar";
 import "./scoreStyles.css";
-import { Erasure } from "../Symbols/Erasure";
+import { ErasureButton } from "../SidePanel/ErasureButton";
+import { ShareButton } from "../SidePanel/ShareButton";
 
 export default function ScorePane() {
   const {
     colorScore,
     letterScore,
     jokerScore,
-    starScore,
-    mainGridDispatch,
-    jokerBoxesDispatch,
-    colorBoxesMarkedDispatch,
-    letterHeaderBoxesDispatch,
-    letterScoreingBoxesDispatch,
+    starScore
   } = useScoreContext();
   const [isCancelConfirming, setIsCancelConforming] = useState(false);
-
-  const resset = () => {
-    mainGridDispatch({ type: "resset" });
-    jokerBoxesDispatch({ type: "resset" });
-    colorBoxesMarkedDispatch({ type: "resset" });
-    letterHeaderBoxesDispatch({ type: "resset" });
-    letterScoreingBoxesDispatch({ type: "resset" });
-  };
 
   return (
     <div className="column right">
@@ -93,12 +81,8 @@ export default function ScorePane() {
         </span>
       </div>
       <div className="row right" style={{ marginTop: "auto" }}>
-        <button
-          className="resset-button"
-          onClick={() => resset() }
-        >
-          <Erasure />
-        </button>
+        <ShareButton />
+        <ErasureButton />
       </div>
     </div>
   );
